@@ -1,0 +1,5 @@
+Chapter 6:  Arrays and Strings
+
+Array
+  - Sequence of variables of the same type arranged contiguously in memory
+  

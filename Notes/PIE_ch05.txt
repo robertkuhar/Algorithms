@@ -1,0 +1,55 @@
+Chapter 5:  Trees and Graphs
+
+Binary Search Trees (BST)
+  - Each Node has a value, a left child, and a right child
+  - The left and right child can be null
+  - The value of the  left child <= the value of the node  (  left.v <= this.v )
+  - The value of the right child >= the value of the node  ( right.v >= this.v ) 
+  - Lookup is an O( log N ) operation in a BST
+  - Deletion and Insertion are O( log N ) operations in a BST
+  - You find the smallest element by traversing to the left
+  - You find the largest element by traversing to the right
+  
+Red-Black Trees
+  - A Self-Balancing Binary Search Tree
+  
+Heaps
+  - A Heap is a Binary Tree structure with the following properties
+    - it is a complete binary tree; each level is completely filled except maybe last
+    - it satisfies the heap-order property
+      -  The data stored in each node is greater than or equal to the data items
+         stored in the children
+  - The root node always holds the largest value, making findMax and O( 1 ) operation
+  - Deletion and Insertion are O( log N ) still
+  - Lookup is an O( n ) operation
+  - It seems that the child nodes are NOT bound by the heap's <= the value of the node rule
+  - Priority Queues are often done with Heaps
+  
+Breadth-First Search
+  - O( N ) operation
+  - high memory requirements because you have to hold all the visited nodes
+  
+Depth-First Search
+  - O( N ) operation
+  - lower memory requirements because you only hold the visited nodes of the branch you are on
+  
+Traversal
+  - Visit every node of a tree and perform some operation
+  - 3 most common:  Preorder, Inorder, Postorder
+       Preorder:  self, left, right
+        Inorder:  left, self, right
+      Postorder:  left, right, self
+  - Traversals are most often recursive
+  
+Graphs
+  - In graphs a Node can have multiple parents
+  - Cycles are possible
+  - Links between nodes can have values or weights
+    - These are called Edges because they contain more information than just the link
+    - Edges can be one or two way
+      -   Directed Graph:  Graph with one-way Edges is a
+      - Undirected Graph:  Graph with two-way Edges
+
+  - Commonly used to model real-world things
+    - Ex. Directed graph to model aqueducts (because water flows one way)
+          Undirected graph to model signal relays
