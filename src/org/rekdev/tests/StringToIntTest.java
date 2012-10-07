@@ -1,6 +1,6 @@
 package org.rekdev.tests;
 
-import junit.framework.*;
+import junit.framework.TestCase;
 
 public class StringToIntTest extends TestCase {
     public void test_integerToString() {
@@ -12,7 +12,18 @@ public class StringToIntTest extends TestCase {
     }
 
     String intToString( int i ) {
-        return null;
+        String result = "";
+        boolean isNegative = ( i < 0 );
+        i = Math.abs( i );
+        while ( i != 0 ) {
+            int digit = i % 10;
+            i = i / 10;
+            result = ( "" + digit ) + result;
+        }
+        if ( isNegative ) {
+            result = "-" + result;
+        }
+        return result;
     }
 
     public void test_stringToInteger() {
@@ -38,10 +49,10 @@ public class StringToIntTest extends TestCase {
         char[] chars = str.toCharArray();
         int ix = chars.length - 1;
         while ( ix >= 0 ) {
-            if ( ix == 0 && ( chars[ ix ] == '-' ) ) {
+            if ( ix == 0 && ( chars[ix] == '-' ) ) {
                 result = -result;
             } else {
-                result += ( ( chars[ ix ] - '0' ) * powerOfTen );
+                result += ( ( chars[ix] - '0' ) * powerOfTen );
                 powerOfTen *= 10;
             }
             ix--;
@@ -57,11 +68,11 @@ public class StringToIntTest extends TestCase {
         char[] chars = str.toCharArray();
         int signMultiplier = 1;
         for ( int ix = 0; ix < chars.length; ix++ ) {
-            if ( ix == 0 && ( chars[ ix ] == '-' ) ) {
+            if ( ix == 0 && ( chars[ix] == '-' ) ) {
                 signMultiplier = -1;
             } else {
                 result *= 10;
-                result += ( chars[ ix ] - '0' );
+                result += ( chars[ix] - '0' );
             }
         }
         return result * signMultiplier;
