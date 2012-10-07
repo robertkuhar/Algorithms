@@ -66,8 +66,8 @@ public class MyString {
      * @return index of first occurrence of target in MyString. -1 if not found.
      */
     public int indexOf( char[] target ) {
-        if ( target == null ) {
-            throw new IllegalArgumentException( "target cannot be null" );
+        if ( target == null || target.length == 0 ) {
+            throw new IllegalArgumentException( "target cannot be null or empty" );
         }
         int indexOf = -1;
         int targetIx = 0;
@@ -75,20 +75,23 @@ public class MyString {
             for ( int i = 0; i < this.myChars.length; i++ ) {
                 char c = this.myChars[i];
                 if ( c == target[targetIx] ) {
-                    if ( indexOf == -1 ) {
+                    if ( targetIx == 0 ) {
                         indexOf = i;
                     }
-                    targetIx++;
-                    if ( targetIx == target.length ) {
+                    if ( targetIx == ( target.length - 1 ) ) {
                         return indexOf;
                     }
+                    targetIx++;
                 } else {
-                    targetIx = 0;
+                    if ( targetIx > 0 ) {
+                        i = indexOf;
+                    }
                     indexOf = -1;
+                    targetIx = 0;
                 }
             }
         }
-        return ( targetIx == target.length ) ? indexOf : -1;
+        return -1;
     }
 
 }

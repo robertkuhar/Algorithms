@@ -41,6 +41,16 @@ public class MyStringTest extends TestCase {
         assertFalse( aaa0Hash == aab0Hash );
     }
 
+    class IndexOfTest {
+        final char[] target;
+        final int expectIx;
+
+        IndexOfTest( char[] target, int expectedIx ) {
+            this.target = target;
+            this.expectIx = expectedIx;
+        }
+    }
+
     /*
      * Test method for 'org.rekdev.MyString.indexOf(char[])'
      */
@@ -48,14 +58,15 @@ public class MyStringTest extends TestCase {
         char[] c = new char[] { 'a', 'a', 'b', 'a', 'a', 'c', 'a', 'b' };
         MyString ms = new MyString( c );
 
-        char[] t1 = new char[] { 'a', 'a' };
-        int indexOfT1 = ms.indexOf( t1 );
-        assertEquals( 0, indexOfT1 );
-
-        char[] t2 = new char[] { 'a', 'b', 'a' };
-        int indexOfT2 = ms.indexOf( t2 );
-        assertEquals( 1, indexOfT2 );
-
+        IndexOfTest[] tests = {
+                new IndexOfTest( new char[] { 'z' }, -1 ),
+                new IndexOfTest( new char[] { 'a', 'a' }, 0 ),
+                new IndexOfTest( new char[] { 'a', 'b', 'a' }, 1 ),
+                new IndexOfTest( new char[] { 'a', 'a', 'c' }, 3 ) };
+        for ( IndexOfTest test : tests ) {
+            int indexOf = ms.indexOf( test.target );
+            assertEquals( test.expectIx, indexOf );
+        }
     }
 
 }
