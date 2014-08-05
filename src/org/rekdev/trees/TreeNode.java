@@ -43,10 +43,12 @@ public class TreeNode<T> {
             return false;
         }
         TreeNode<?> that = (TreeNode<?>) o;
-        if ( this.getValue().equals( that.getValue() ) == false ) {
+        if ( this.getValue()
+                .equals( that.getValue() ) == false ) {
             return false;
         }
-        if ( this.getChildren().equals( that.getChildren() ) == false ) {
+        if ( this.getChildren()
+                .equals( that.getChildren() ) == false ) {
             return false;
         }
         return true;
@@ -60,8 +62,10 @@ public class TreeNode<T> {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        String[] s = this.getClass().getName().split( "\\." );
-        sb.append( s[ s.length - 1 ] );
+        String[] s = this.getClass()
+                .getName()
+                .split( "\\." );
+        sb.append( s[s.length - 1] );
         sb.append( "(" );
         sb.append( this.getValue() );
         sb.append( ", " );
@@ -71,7 +75,8 @@ public class TreeNode<T> {
     }
 
     /**
-     * This method performs a NonRecursive Depth First Search for a Node equal to target.
+     * This method performs a NonRecursive Depth First Search for a Node equal
+     * to target.
      * 
      * @param target
      * @return TreeNode<T> matching target; null if not found.
@@ -96,7 +101,8 @@ public class TreeNode<T> {
     }
 
     /**
-     * This method performs a Recursive Depth First Search for a Node equal to target.
+     * This method performs a Recursive Depth First Search for a Node equal to
+     * target.
      * 
      * @param target
      * @return TreeNode<T> matching target; null if not found.
@@ -106,10 +112,12 @@ public class TreeNode<T> {
     }
 
     /**
-     * This method performs a Recursive Depth First Search for a Node equal to target.
+     * This method performs a Recursive Depth First Search for a Node equal to
+     * target.
      * 
-     * @param target
-     * @param visited
+     * @param target target node
+     * @param node current node
+     * @param visited Map of visited nodes
      * @return TreeNode<T> matching target; null if not found.
      */
     private TreeNode<T> dfsRecursive( T target, TreeNode<T> node, Map<TreeNode<T>, TreeNode<T>> visited ) {
@@ -129,10 +137,10 @@ public class TreeNode<T> {
     }
 
     /**
-     * This method performs a NonRecursive Bredth First Search for a Node equal to target.
+     * This method performs a NonRecursive Breadth First Search for a Node equal
+     * to target.
      * 
      * @param target
-     * @param node
      * @return TreeNode<T> matching target; null if not found.
      */
     public TreeNode<T> bfsNonRecursive( T target ) {
