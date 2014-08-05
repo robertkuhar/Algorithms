@@ -10,9 +10,9 @@ import java.util.Stack;
  * 
  * @param <T>
  */
-public class Queue< T > {
-    Stack< T> stackIn = new Stack< T>();
-    Stack< T> stackOut = new Stack< T>();
+public class Queue<T> {
+    Stack<T> stackIn = new Stack<T>();
+    Stack<T> stackOut = new Stack<T>();
 
     public void enqueue( T o ) {
         this.stackIn.push( o );
