@@ -100,42 +100,23 @@ public class TreeNode<T> {
         return null;
     }
 
-    /**
-     * This method performs a Recursive Depth First Search for a Node equal to
-     * target.
-     * 
-     * @param target
-     * @return TreeNode<T> matching target; null if not found.
-     */
     public TreeNode<T> dfsRecursive( T target ) {
-        return dfsRecursive( target, this, new HashMap<TreeNode<T>, TreeNode<T>>() );
+        return dfsRecursive( target, this );
     }
 
-    /**
-     * This method performs a Recursive Depth First Search for a Node equal to
-     * target.
-     * 
-     * @param target target node
-     * @param node current node
-     * @param visited Map of visited nodes
-     * @return TreeNode<T> matching target; null if not found.
-     */
-    private TreeNode<T> dfsRecursive( T target, TreeNode<T> node, Map<TreeNode<T>, TreeNode<T>> visited ) {
-        visited.put( node, node );
+    private TreeNode<T> dfsRecursive( T target, TreeNode<T> node ) {
         if ( target.equals( node.getValue() ) ) {
             return node;
         }
-        for ( TreeNode<T> child : node.getChildren() ) {
-            if ( visited.get( child ) == null ) {
-                TreeNode<T> targetNode = dfsRecursive( target, child, visited );
-                if ( targetNode != null ) {
-                    return targetNode;
-                }
+        for( TreeNode<T> child : node.getChildren() ) {
+            TreeNode<T> found = dfsRecursive( target, child );
+            if ( found != null ) {
+                return found;
             }
         }
         return null;
     }
-
+    
     /**
      * This method performs a NonRecursive Breadth First Search for a Node equal
      * to target.
