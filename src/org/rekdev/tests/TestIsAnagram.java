@@ -9,7 +9,7 @@ import org.junit.Test;
 
 /**
  * Summer 2014 Phonescreen question: "Write a function that takes 2 Strings as
- * input and reports whether they are anagrams of each other.
+ * input and reports whether they are anagrams of each other."
  * 
  * @author robertkuhar
  *
