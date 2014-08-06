@@ -3,8 +3,8 @@ package org.rekdev;
 import java.util.Stack;
 
 /**
- * Using only a Stack this class implements a Queue. Interview question from
- * Redfin.
+ * Using only a Stack this class implements a Queue. Excellent interview
+ * question from Redfin autumn 2007.
  * 
  * @author robertkuhar
  * 
