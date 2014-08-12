@@ -2,8 +2,10 @@ package org.rekdev.trees;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
 
 public class TreeNode<T> {
@@ -38,39 +40,11 @@ public class TreeNode<T> {
         this.children.remove( child );
     }
 
-    /*
-     * TODO: I'm not so sure this is correct. There is no requirement that a
-     * value must be unique within a Tree, is there?  The searches, however
-     * return a TreeNode and the tests are relying on this equality feature.
-     */
-    public boolean equals( Object o ) {
-        if ( o instanceof TreeNode<?> == false ) {
-            return false;
-        }
-        TreeNode<?> that = (TreeNode<?>) o;
-        if ( this.getValue().equals( that.getValue() ) == false ) {
-            return false;
-        }
-        if ( this.getChildren().equals( that.getChildren() ) == false ) {
-            return false;
-        }
-        return true;
-    }
-
-    /*
-     * TODO: I'm not so sure this is correct. There is no requirement that a
-     * value must be unique within a Tree, is there?  The searches, however
-     * return a TreeNode and the tests are relying on this equality feature.
-     */
-    public int hashCode() {
-        int hashCode = this.value.hashCode();
-        hashCode += this.children.hashCode();
-        return hashCode;
-    }
-
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        String[] s = this.getClass().getName().split( "\\." );
+        String[] s = this.getClass()
+                .getName()
+                .split( "\\." );
         sb.append( s[s.length - 1] );
         sb.append( "(" );
         sb.append( this.getValue() );
@@ -107,17 +81,29 @@ public class TreeNode<T> {
     }
 
     public TreeNode<T> dfsRecursive( T target ) {
-        return dfsRecursive( target, this );
+        return dfsRecursive( target, this, new HashSet<TreeNode<T>>() );
     }
 
-    private TreeNode<T> dfsRecursive( T target, TreeNode<T> node ) {
+    /**
+     * This method performs a Recursive Depth First Search for a Node equal to
+     * target.
+     * 
+     * @param target node
+     * @param current node
+     * @param visited visited nodes
+     * @return TreeNode<T> matching target; null if not found.
+     */
+    private TreeNode<T> dfsRecursive( T target, TreeNode<T> node, Set<TreeNode<T>> visited ) {
+        visited.add( node );
         if ( target.equals( node.getValue() ) ) {
             return node;
         }
         for ( TreeNode<T> child : node.getChildren() ) {
-            TreeNode<T> found = dfsRecursive( target, child );
-            if ( found != null ) {
-                return found;
+            if ( !visited.contains( child ) ) {
+                TreeNode<T> targetNode = dfsRecursive( target, child, visited );
+                if ( targetNode != null ) {
+                    return targetNode;
+                }
             }
         }
         return null;
