@@ -1,6 +1,6 @@
 package org.rekdev.tests;
 
-import org.rekdev.trees.GraphNode;
+import org.rekdev.graph.GraphNode;
 
 import junit.framework.TestCase;
 

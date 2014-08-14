@@ -1,4 +1,4 @@
-package org.rekdev.trees;
+package org.rekdev.graph;
 
 import java.util.ArrayList;
 import java.util.HashMap;
