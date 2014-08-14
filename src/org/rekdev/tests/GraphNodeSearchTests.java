@@ -1,17 +1,17 @@
 package org.rekdev.tests;
 
-import org.rekdev.trees.TreeNode;
+import org.rekdev.trees.GraphNode;
 
 import junit.framework.TestCase;
 
-public class TreeNodeSearchTests extends TestCase {
-    private static final TreeNode<String> A = new TreeNode<String>( "A" );
-    private static final TreeNode<String> B = new TreeNode<String>( "B" );
-    private static final TreeNode<String> C = new TreeNode<String>( "C" );
-    private static final TreeNode<String> D = new TreeNode<String>( "D" );
-    private static final TreeNode<String> E = new TreeNode<String>( "E" );
-    private static final TreeNode<String> F = new TreeNode<String>( "F" );
-    private static final TreeNode<String> G = new TreeNode<String>( "G" );
+public class GraphNodeSearchTests extends TestCase {
+    private static final GraphNode<String> A = new GraphNode<String>( "A" );
+    private static final GraphNode<String> B = new GraphNode<String>( "B" );
+    private static final GraphNode<String> C = new GraphNode<String>( "C" );
+    private static final GraphNode<String> D = new GraphNode<String>( "D" );
+    private static final GraphNode<String> E = new GraphNode<String>( "E" );
+    private static final GraphNode<String> F = new GraphNode<String>( "F" );
+    private static final GraphNode<String> G = new GraphNode<String>( "G" );
 
     static {
         A.addChild( B );
@@ -27,7 +27,7 @@ public class TreeNodeSearchTests extends TestCase {
     }
 
     public void testNonRecursiveDepthFirstSearch() {
-        TreeNode<String> found = A.dfsNonRecursive( G.getValue() );
+        GraphNode<String> found = A.dfsNonRecursive( G.getValue() );
         assertNotNull( found );
         assertEquals( G, found );
         found = A.dfsNonRecursive( "Bob" );
@@ -36,7 +36,7 @@ public class TreeNodeSearchTests extends TestCase {
     }
 
     public void testRecursiveDepthFirstSearch() {
-        TreeNode<String> found = A.dfsRecursive( G.getValue() );
+        GraphNode<String> found = A.dfsRecursive( G.getValue() );
         assertNotNull( found );
         assertEquals( G, found );
         found = A.dfsRecursive( "Bob" );
@@ -44,7 +44,7 @@ public class TreeNodeSearchTests extends TestCase {
     }
 
     public void testNonRecursiveBredthFirstSearch() {
-        TreeNode<String> found = A.bfsNonRecursive( G.getValue() );
+        GraphNode<String> found = A.bfsNonRecursive( G.getValue() );
         assertNotNull( found );
         assertEquals( G, found );
         found = A.bfsNonRecursive( "Bob" );

@@ -8,23 +8,23 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 
-public class TreeNode<T> {
+public class GraphNode<T> {
     private final T value;
-    private List<TreeNode<T>> children;
+    private List<GraphNode<T>> children;
 
-    public TreeNode( T value, List<TreeNode<T>> children ) {
+    public GraphNode( T value, List<GraphNode<T>> children ) {
         this.value = value;
-        this.children = new ArrayList<TreeNode<T>>();
-        for ( TreeNode<T> child : children ) {
+        this.children = new ArrayList<GraphNode<T>>();
+        for ( GraphNode<T> child : children ) {
             this.children.add( child );
         }
     }
 
-    public TreeNode( T value ) {
-        this( value, new ArrayList<TreeNode<T>>() );
+    public GraphNode( T value ) {
+        this( value, new ArrayList<GraphNode<T>>() );
     }
 
-    public List<TreeNode<T>> getChildren() {
+    public List<GraphNode<T>> getChildren() {
         return this.children;
     }
 
@@ -32,11 +32,11 @@ public class TreeNode<T> {
         return this.value;
     }
 
-    public void addChild( TreeNode<T> child ) {
+    public void addChild( GraphNode<T> child ) {
         this.children.add( child );
     }
 
-    public void removeChild( TreeNode<T> child ) {
+    public void removeChild( GraphNode<T> child ) {
         this.children.remove( child );
     }
 
@@ -61,17 +61,17 @@ public class TreeNode<T> {
      * @param target
      * @return TreeNode<T> matching target; null if not found.
      */
-    public TreeNode<T> dfsNonRecursive( T target ) {
-        Stack<TreeNode<T>> stack = new Stack<TreeNode<T>>();
-        Map<TreeNode<T>, TreeNode<T>> visited = new HashMap<TreeNode<T>, TreeNode<T>>();
+    public GraphNode<T> dfsNonRecursive( T target ) {
+        Stack<GraphNode<T>> stack = new Stack<GraphNode<T>>();
+        Map<GraphNode<T>, GraphNode<T>> visited = new HashMap<GraphNode<T>, GraphNode<T>>();
         stack.push( this );
         while ( !stack.empty() ) {
-            TreeNode<T> candidate = (TreeNode<T>) stack.pop();
+            GraphNode<T> candidate = (GraphNode<T>) stack.pop();
             if ( target.equals( candidate.getValue() ) ) {
                 return candidate;
             }
             visited.put( candidate, candidate );
-            for ( TreeNode<T> child : candidate.getChildren() ) {
+            for ( GraphNode<T> child : candidate.getChildren() ) {
                 if ( visited.get( child ) == null ) {
                     stack.push( child );
                 }
@@ -80,8 +80,8 @@ public class TreeNode<T> {
         return null;
     }
 
-    public TreeNode<T> dfsRecursive( T target ) {
-        return dfsRecursive( target, this, new HashSet<TreeNode<T>>() );
+    public GraphNode<T> dfsRecursive( T target ) {
+        return dfsRecursive( target, this, new HashSet<GraphNode<T>>() );
     }
 
     /**
@@ -93,14 +93,14 @@ public class TreeNode<T> {
      * @param visited visited nodes
      * @return TreeNode<T> matching target; null if not found.
      */
-    private TreeNode<T> dfsRecursive( T target, TreeNode<T> node, Set<TreeNode<T>> visited ) {
+    private GraphNode<T> dfsRecursive( T target, GraphNode<T> node, Set<GraphNode<T>> visited ) {
         visited.add( node );
         if ( target.equals( node.getValue() ) ) {
             return node;
         }
-        for ( TreeNode<T> child : node.getChildren() ) {
+        for ( GraphNode<T> child : node.getChildren() ) {
             if ( !visited.contains( child ) ) {
-                TreeNode<T> targetNode = dfsRecursive( target, child, visited );
+                GraphNode<T> targetNode = dfsRecursive( target, child, visited );
                 if ( targetNode != null ) {
                     return targetNode;
                 }
@@ -116,17 +116,17 @@ public class TreeNode<T> {
      * @param target
      * @return TreeNode<T> matching target; null if not found.
      */
-    public TreeNode<T> bfsNonRecursive( T target ) {
-        List<TreeNode<T>> queue = new ArrayList<TreeNode<T>>();
-        Map<TreeNode<T>, TreeNode<T>> visited = new HashMap<TreeNode<T>, TreeNode<T>>();
+    public GraphNode<T> bfsNonRecursive( T target ) {
+        List<GraphNode<T>> queue = new ArrayList<GraphNode<T>>();
+        Map<GraphNode<T>, GraphNode<T>> visited = new HashMap<GraphNode<T>, GraphNode<T>>();
         queue.add( this );
         while ( !queue.isEmpty() ) {
-            TreeNode<T> candidate = (TreeNode<T>) queue.remove( 0 );
+            GraphNode<T> candidate = (GraphNode<T>) queue.remove( 0 );
             if ( target.equals( candidate.getValue() ) ) {
                 return candidate;
             }
             visited.put( candidate, candidate );
-            for ( TreeNode<T> child : candidate.getChildren() ) {
+            for ( GraphNode<T> child : candidate.getChildren() ) {
                 if ( visited.get( child ) == null ) {
                     queue.add( child );
                 }
