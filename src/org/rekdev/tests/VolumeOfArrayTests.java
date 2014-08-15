@@ -17,44 +17,6 @@ public class VolumeOfArrayTests {
     }
 
     @Test
-    public void testSinglePassImplementation() {
-        /**
-         * This implementation makes a single pass through the array
-         * backtracking only to calculate the sum as the bounds of each
-         * depression are discovered.
-         */
-        CapacityCalculator singlePassImpl = new CapacityCalculator() {
-            @Override
-            public int calc( int[] array ) {
-                if ( array == null ) {
-                    throw new IllegalArgumentException( "Expected not null array" );
-                }
-                if ( array.length <= 2 ) {
-                    return 0;
-                }
-                int totalCapacity = 0;
-                int leftIx = -1;
-                for ( int i = 0; i < array.length; i++ ) {
-                    if ( leftIx == -1 ) {
-                        leftIx = i;
-                    } else if ( array[i] >= array[leftIx] ) {
-                        int minHeight = Math.min( array[leftIx], array[i] );
-                        for ( int j = leftIx + 1; j < i; j++ ) {
-                            totalCapacity += minHeight - array[j];
-                        }
-                        leftIx = -1;
-                    }
-                }
-                return totalCapacity;
-            }
-        };
-        testSimple( singlePassImpl );
-        testHarder( singlePassImpl );
-        // testHarderYet( singlePassImpl );
-        testEdgeCases( singlePassImpl );
-    }
-
-    @Test
     public void testFindMaxesFromHere() {
         /**
          * This implementation considers each element and searches to the left
