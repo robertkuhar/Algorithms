@@ -37,9 +37,9 @@ public class VolumeOfArrayTests {
                 int leftIx = -1;
                 int rightIx = -1;
                 for ( int i = 0; i < array.length; i++ ) {
-                    // TODO: Can I cache the previous value of leftIx?
+                    // TODO: Can I reuse the previous value of leftIx?
                     leftIx = findBoundIx( array, i, -1 );
-                    // TODO: Can I cache the previous value of rightIx?
+                    // TODO: Can I reuse the previous value of rightIx?
                     rightIx = findBoundIx( array, i, 1 );
                     if ( leftIx >= 0 && rightIx >= 0 ) {
                         int elemCapacity = Math.min( array[leftIx], array[rightIx] ) - array[i];
@@ -88,22 +88,20 @@ public class VolumeOfArrayTests {
         testIt( 8, a, capacityCalculator );
     }
 
-    public void testHarder( CapacityCalculator capacityCalculator ) {
+    void testHarder( CapacityCalculator capacityCalculator ) {
         int[] b = { 1, 2, 6, 4, 5, 1, 2, 3, 6, 4 };
         testIt( 15, b, capacityCalculator );
     }
 
-    private void testHarderYet( CapacityCalculator capacityCalculator ) {
+    void testHarderYet( CapacityCalculator capacityCalculator ) {
         int[] c = { 3, 2, 6, 4, 5, 1, 4, 3, 5, 4 };
         testIt( 9, c, capacityCalculator );
     }
 
-    public void testEdgeCases( CapacityCalculator capacityCalculator ) {
+    void testEdgeCases( CapacityCalculator capacityCalculator ) {
         int[][] testCases = { { 1, 1, 1 }, { 1, 2, 3 }, { 3, 2, 1 }, { 1, 2, 2, 1 }, { 1 }, {} };
         for ( int i = 0; i < testCases.length; i++ ) {
-            int[] testCase = testCases[i];
-            int capacity = capacityCalculator.calc( testCase );
-            assertEquals( 0, capacity );
+            testIt( 0, testCases[i], capacityCalculator );
         }
     }
 
