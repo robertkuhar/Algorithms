@@ -34,9 +34,13 @@ public class VolumeOfArrayTests {
                     return 0;
                 }
                 int totalCapacity = 0;
+                int leftIx = -1;
+                int rightIx = -1;
                 for ( int i = 0; i < array.length; i++ ) {
-                    int leftIx = findBoundIx( array, i, -1 );
-                    int rightIx = findBoundIx( array, i, 1 );
+                    // TODO: Can I cache the previous value of leftIx?
+                    leftIx = findBoundIx( array, i, -1 );
+                    // TODO: Can I cache the previous value of rightIx?
+                    rightIx = findBoundIx( array, i, 1 );
                     if ( leftIx >= 0 && rightIx >= 0 ) {
                         int elemCapacity = Math.min( array[leftIx], array[rightIx] ) - array[i];
                         totalCapacity += elemCapacity;
@@ -74,22 +78,24 @@ public class VolumeOfArrayTests {
         testEdgeCases( findMaxesFromHere );
     }
 
+    void testIt( int expectedCapacity, int[] array, CapacityCalculator capacityCalculator ) {
+        int capcity = capacityCalculator.calc( array );
+        assertEquals( expectedCapacity, capcity );
+    }
+
     void testSimple( CapacityCalculator capacityCalculator ) {
         int[] a = { 5, 1, 1, 5 };
-        int capcity = capacityCalculator.calc( a );
-        assertEquals( 8, capcity );
+        testIt( 8, a, capacityCalculator );
     }
 
     public void testHarder( CapacityCalculator capacityCalculator ) {
         int[] b = { 1, 2, 6, 4, 5, 1, 2, 3, 6, 4 };
-        int capcity = capacityCalculator.calc( b );
-        assertEquals( 15, capcity );
+        testIt( 15, b, capacityCalculator );
     }
 
     private void testHarderYet( CapacityCalculator capacityCalculator ) {
-        int[] a = { 3, 2, 6, 4, 5, 1, 4, 3, 5, 4 };
-        int capcity = capacityCalculator.calc( a );
-        assertEquals( 9, capcity );
+        int[] c = { 3, 2, 6, 4, 5, 1, 4, 3, 5, 4 };
+        testIt( 9, c, capacityCalculator );
     }
 
     public void testEdgeCases( CapacityCalculator capacityCalculator ) {
