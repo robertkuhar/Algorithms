@@ -13,11 +13,13 @@ public class ContainsTest {
     }
 
     class TestCase {
+        public final String label;
         public final boolean expectedResult;
         public final int[] a1;
         public final int[] a2;
 
-        public TestCase( boolean expectedResult, int[] a1, int[] a2 ) {
+        public TestCase( String label, boolean expectedResult, int[] a1, int[] a2 ) {
+            this.label = label;
             this.expectedResult = expectedResult;
             this.a1 = a1;
             this.a2 = a2;
@@ -25,13 +27,17 @@ public class ContainsTest {
     }
 
     TestCase[] testCases = {
-            new TestCase( true, new int[] { 1, 6, 2, 1, 4, 1, 2, 1, 8 }, new int[] { 1, 2, 1 } ),
-            new TestCase( false, new int[] { 1, 2, 1 }, new int[] { 1, 2, 2, 2, 5, 7, 9, 9, 9 } ),
-            new TestCase( false, new int[] { 1, 6, 2, 1, 4, 1, 2, 1, 8 }, new int[] { 2, 1, 2 } ),
-            new TestCase( true, new int[] { 1, 2, 1, 2, 3 }, new int[] { 1, 2, 3 } ),
-            new TestCase( true, new int[] { 1, 2, 1 }, new int[] { 1, 2, 1 } ),
-            new TestCase( false, new int[] { 1, 2, 1, 2, 3 }, new int[] { 1, 2, 4 } ),
-            new TestCase( true, new int[] { 8, 8, 8, 8, 4, 8, 8, 8, 8, 2, 8, 8, 8, 8, 8, -1, 8 }, new int[] { 8, 8, 8, 8, 8 } ) };
+            new TestCase( "TestCase1", true, new int[] { 1, 6, 2, 1, 4, 1, 2, 1, 8 }, new int[] { 1, 2, 1 } ),
+            new TestCase( "TestCase2", false, new int[] { 1, 2, 1 }, new int[] { 1, 2, 2, 2, 5, 7, 9, 9, 9 } ),
+            new TestCase( "TestCase3", false, new int[] { 1, 6, 2, 1, 4, 1, 2, 1, 8 }, new int[] { 2, 1, 2 } ),
+            new TestCase( "TestCase4", true, new int[] { 1, 2, 1, 2, 3 }, new int[] { 1, 2, 3 } ),
+            new TestCase( "TestCase5", true, new int[] { 1, 2, 1 }, new int[] { 1, 2, 1 } ),
+            new TestCase( "TestCase6", false, new int[] { 1, 2, 1, 2, 3 }, new int[] { 1, 2, 4 } ),
+            new TestCase(
+                    "TestCase7",
+                    true,
+                    new int[] { 8, 8, 8, 8, 4, 8, 8, 8, 8, 2, 8, 8, 8, 8, 8, -1, 8 },
+                    new int[] { 8, 8, 8, 8, 8 } ) };
 
     @Test
     public void testRobertsContains() {
@@ -62,7 +68,7 @@ public class ContainsTest {
             }
         };
         for ( TestCase t : testCases ) {
-            assertEquals( t.expectedResult, roberts.contains( t.a1, t.a2 ) );
+            assertEquals( t.label, t.expectedResult, roberts.contains( t.a1, t.a2 ) );
         }
     }
 
@@ -87,7 +93,7 @@ public class ContainsTest {
             }
         };
         for ( TestCase t : testCases ) {
-            assertEquals( t.expectedResult, best.contains( t.a1, t.a2 ) );
+            assertEquals( t.label, t.expectedResult, best.contains( t.a1, t.a2 ) );
         }
     }
 
@@ -114,7 +120,7 @@ public class ContainsTest {
             }
         };
         for ( TestCase t : testCases ) {
-            assertEquals( t.expectedResult, kates.contains( t.a1, t.a2 ) );
+            assertEquals( t.label, t.expectedResult, kates.contains( t.a1, t.a2 ) );
         }
     }
 }
