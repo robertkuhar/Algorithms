@@ -3,6 +3,11 @@ package org.rekdev;
 public class MyString {
     private char[] myChars = null;
 
+    /**
+     * Construct an instance of MyString from an array of chars.
+     * 
+     * @param chars
+     */
     public MyString( char[] chars ) {
         if ( chars == null ) {
             throw new IllegalArgumentException( "chars cannot be null!" );
