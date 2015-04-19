@@ -12,6 +12,14 @@ package org.rekdev;
  * </p>
  */
 public interface CapacityCalculator {
+  /**
+   * Each int value in the input array represents a height of a wall in
+   * container. The calc function calculates the volume of water trapped within
+   * these depressions.
+   * 
+   * @param array int array whose values are wall heights within a container.
+   * @return the integer volume of the water trapped in the depressions of the
+   *         input array.
+   */
   int calc(int[] array);
 }
-
