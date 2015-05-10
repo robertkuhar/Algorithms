@@ -13,7 +13,7 @@ import org.rekdev.CapacityCalculator;
  * be trapped by the depressions. Ex. [ 5, 1, 1, 5 ] is 8. [ 1, 2, 1, 2, 1 ] is
  * 1.
  */
-public class VolumeOfArrayTests {
+public class CapacityCalculatorTests {
   @Test
   public void testFindMaxesFromHere() {
     /**

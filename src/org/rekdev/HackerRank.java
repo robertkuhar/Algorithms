@@ -5,24 +5,6 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class HackerRank {
-    public static void fizzBuzz( int n ) {
-        for ( int i = 1; i <= n; i++ ) {
-            boolean isFizz = ( i % 3 == 0 );
-            boolean isBuzz = ( i % 5 == 0 );
-            StringBuilder sb = new StringBuilder();
-            if ( isFizz ) {
-                sb.append( "Fizz" );
-            }
-            if ( isBuzz ) {
-                sb.append( "Buzz" );
-            }
-            if ( !( isFizz || isBuzz ) ) {
-                sb.append( "" + i );
-            }
-            System.out.println( sb.toString() );
-        }
-    }
-
     // org.rekdev.tests.LonelyInt has a better XOR based algorithm
     public static int lonelyInt( int[] array ) {
         Set<Integer> candidates = new HashSet<Integer>();
