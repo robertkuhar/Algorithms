@@ -3,32 +3,30 @@ package org.rekdev;
 public class FizzBuzz {
 
   /**
-   * Write a function that prints the numbers from 1 to n and has the following
-   * properties.
+   * Write a function that has the following properties.
    * <p>
-   * For multiples of 3, print "Fizz"<br/>
-   * For multiples of 5, print "Buzz"<br/>
-   * For numbers which are multiples of both 3 and 5, print "FizzBuzz"<br/>
-   * Otherwise, just print the number.<br/>
+   * If x is a multiple of 3, return "Fizz"<br/>
+   * If x is a multiple of 5, return "Buzz"<br/>
+   * If x is a multiple of both 3 and 5, return FizzBuzz"<br/>
+   * Otherwise, just return string value of x<br/>
    * 
-   * @param n - number of iterations
+   * @param x - candidate
+   * @return "Fizz", "Buzz", "FizzBuzz", or string value of x.
    */
-  public static void fizzBuzz(int n) {
-    for (int i = 1; i < n; i++) {
-      if (i % 15 == 0) {
-        System.out.println("FizzBuzz");
-      } else if (i % 3 == 0) {
-        System.out.println("Fizz");
-      } else if (i % 5 == 0) {
-        System.out.println("Buzz");
-      } else {
-        System.out.println(i);
+  public static String fizzBuzz(int x) {
+      if (x % 15 == 0) {
+        return "FizzBuzz";
+      } else if (x % 3 == 0) {
+        return "Fizz";
+      } else if (x % 5 == 0) {
+        return "Buzz";
       }
-    }
+      return "" + x;
   }
 
   public static void main(String[] args) {
-    fizzBuzz(20);
+    for(int i = 1; i <= 20; i++) {
+      System.out.println(String.format("fizzBuzz(%d) => %s",i,fizzBuzz(i)));
+    }
   }
-
 }
