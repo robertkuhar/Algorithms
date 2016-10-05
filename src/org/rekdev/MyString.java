@@ -35,6 +35,7 @@ public class MyString {
      * @param obj the object to compare with
      * @return true if the objects are the same; false otherwise.
      */
+    @Override
     public boolean equals( Object obj ) {
         if ( obj instanceof MyString ) {
             MyString that = (MyString) obj;
@@ -55,6 +56,7 @@ public class MyString {
      * 
      * @return HashCode for this instance of MyString.
      */
+    @Override
     public int hashCode() {
         int hashCode = 0;
         for ( int i = 0; i < this.myChars.length; i++ ) {
