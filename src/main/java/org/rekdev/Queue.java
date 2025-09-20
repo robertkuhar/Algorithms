@@ -1,0 +1,36 @@
+package org.rekdev;
+
+import java.util.Stack;
+
+/**
+ * Using only a Stack this class implements a Queue. Excellent interview question from Redfin autumn
+ * 2007.
+ *
+ * @param <T>
+ * @author robertkuhar
+ */
+public class Queue<T> {
+
+  Stack<T> stackIn = new Stack<T>();
+  Stack<T> stackOut = new Stack<T>();
+
+  public void enqueue(T o) {
+    this.stackIn.push(o);
+  }
+
+  public T dequeue() {
+    if (this.stackOut.isEmpty()) {
+      // Reverse the stackIn into the stackOut...
+      while (this.stackIn.isEmpty() == false) {
+        this.stackOut.push(this.stackIn.pop());
+      }
+    }
+    final T o = this.stackOut.pop();
+    return o;
+  }
+
+  public boolean isEmpty() {
+    final boolean empty = (this.stackIn.isEmpty() && this.stackOut.isEmpty());
+    return empty;
+  }
+}
