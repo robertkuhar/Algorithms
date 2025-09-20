@@ -1,6 +1,8 @@
 # My Algorithms Project
 
-This is an Algorithms project built with **Gradle** and **Java 21**.
+Random Algorithmic stuff and interview practice questions in Java
+- http://practiceit.cs.washington.edu/practiceit/list.jsp
+- Some solutions to "Programming Interviews Exposed, 2nd Edition" by Mongan, Suojanen, Giguere
 
 ## Prerequisites
 
