@@ -12,7 +12,7 @@ package org.rekdev.capacitycalc;
  *
  * @author robertkuhar
  */
-public class BobKCapacityCalculator implements CapacityCalculator {
+public class KuharCapacityCalculator implements CapacityCalculator {
 
   @Override
   public int calc(int[] array) {

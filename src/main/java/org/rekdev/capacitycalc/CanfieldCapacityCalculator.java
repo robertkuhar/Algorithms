@@ -13,7 +13,7 @@ import java.util.Arrays;
  *
  * @author joshcanfield
  */
-public class JoshCCapacityCalculator implements CapacityCalculator {
+public class CanfieldCapacityCalculator implements CapacityCalculator {
 
   @Override
   public int calc(int[] array) {

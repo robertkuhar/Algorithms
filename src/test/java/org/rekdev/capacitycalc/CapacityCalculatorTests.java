@@ -12,8 +12,8 @@ import org.junit.jupiter.api.Test;
 public class CapacityCalculatorTests {
 
   @Test
-  public void testFindMaxesFromHere() {
-    final CapacityCalculator findMaxesFromHere = new BobKCapacityCalculator();
+  public void testKuharCapacityCalculator() {
+    final CapacityCalculator findMaxesFromHere = new KuharCapacityCalculator();
     testSimple(findMaxesFromHere);
     testHarder(findMaxesFromHere);
     testHarderYet(findMaxesFromHere);
@@ -48,11 +48,20 @@ public class CapacityCalculatorTests {
   }
 
   @Test
-  public void testJoshC_onePassWonder() {
-    CapacityCalculator joshC_OnePassWonder = new JoshCCapacityCalculator();
+  public void testCanfieldCapcityCalculator() {
+    CapacityCalculator joshC_OnePassWonder = new CanfieldCapacityCalculator();
     testSimple(joshC_OnePassWonder);
     testHarder(joshC_OnePassWonder);
     testHarderYet(joshC_OnePassWonder);
     testEdgeCases(joshC_OnePassWonder);
+  }
+
+  @Test
+  public void testGeminiCapcityCalculator() {
+    CapacityCalculator capacityCalculator = new GeminiCapacityCalculator();
+    testSimple(capacityCalculator);
+    testHarder(capacityCalculator);
+    testHarderYet(capacityCalculator);
+    testEdgeCases(capacityCalculator);
   }
 }
