@@ -5,14 +5,10 @@ import java.util.List;
 
 public class PermutationsOfString {
 
-  public static void main(String args[]) {
-    System.out.println(permutation("", args[0]));
-  }
-
-  static private List<String> permutation(String prefix, String s) {
+  static public List<String> permutation(String prefix, String s) {
     checkNotNull(s);
     checkNotNull(prefix);
-    List<String> permutations = new ArrayList<String>();
+    List<String> permutations = new ArrayList<>();
     int n = s.length();
     if (n == 0) {
       /*
@@ -28,7 +24,9 @@ public class PermutationsOfString {
          * at the current position.
          */
         permutations.addAll(
-            permutation(prefix + s.charAt(i), s.substring(0, i) + s.substring(i + 1, n)));
+            permutation(
+                prefix + s.charAt(i),
+                s.substring(0, i) + s.substring(i + 1, n)));
       }
     }
     return permutations;
