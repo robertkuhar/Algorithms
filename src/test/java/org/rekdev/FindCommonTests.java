@@ -1,9 +1,8 @@
-package org.rekdev.tests;
+package org.rekdev;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-import org.rekdev.*;
 
 public class FindCommonTests {
 

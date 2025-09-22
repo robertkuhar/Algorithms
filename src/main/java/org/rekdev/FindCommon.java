@@ -12,24 +12,24 @@ import java.util.*;
 public class FindCommon {
 
   public static String fOrderN_Squared(String a, String b) {
-    String result = "";
+    StringBuilder result = new StringBuilder();
     for (int i = 0; i < a.length(); i++) {
       char c = a.charAt(i);
       for (int j = 0; j < b.length(); j++) {
-        if (b.charAt(j) == c && result.indexOf(c) < 0) {
-          result += c;
+        if (b.charAt(j) == c && result.toString().indexOf(c) < 0) {
+          result.append(c);
         }
       }
     }
-    return result;
+    return result.toString();
   }
 
   public static String fOrderN(String a, String b) {
-    String result = "";
-    Map<Character, Integer> map = new LinkedHashMap<Character, Integer>();
+    StringBuilder result = new StringBuilder();
+    Map<Character, Integer> map = new LinkedHashMap<>();
     for (int i = 0; i < a.length(); i++) {
       char c = a.charAt(i);
-      if (map.containsKey(c) == false) {
+      if (!map.containsKey(c)) {
         map.put(c, 0);
       }
     }
@@ -43,9 +43,9 @@ public class FindCommon {
     }
     for (char c : map.keySet()) {
       if (map.get(c) > 0) {
-        result += c;
+        result.append(c);
       }
     }
-    return result;
+    return result.toString();
   }
 }

@@ -20,6 +20,11 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.11.0")
     // https://mvnrepository.com/artifact/org.assertj/assertj-core
     testImplementation("org.assertj:assertj-core:3.27.5")
+
+    compileOnly("org.projectlombok:lombok:1.18.32")
+    annotationProcessor("org.projectlombok:lombok:1.18.32")
+    testCompileOnly("org.projectlombok:lombok:1.18.32")
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.32")
 }
 
 tasks.named<Test>("test") {
@@ -57,8 +62,20 @@ tasks.jacocoTestCoverageVerification {
     }
 }
 
-tasks.jacocoTestReport {
-    dependsOn(tasks.test)
+tasks.withType<JacocoReport> {
+    afterEvaluate {
+        classDirectories.setFrom(
+            classDirectories.files.map {
+                fileTree(it) {
+                    exclude(
+                        // Exclude all classes annotated with @lombok.Generated
+                        "**/lombok/**",
+                        "**/generated/**"
+                    )
+                }
+            }
+        )
+    }
     reports {
         xml.required.set(false)
         html.required.set(true)
