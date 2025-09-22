@@ -22,14 +22,4 @@ public class FizzBuzz {
     }
     return "" + x;
   }
-
-  /**
-   * For the numbers 1 through 20, call the fizzBuzz function and output to standard out the results
-   * like "fizzBuzz(3) => Fizz".
-   */
-  public static void main(String[] args) {
-    for (int i = 1; i <= 20; i++) {
-      System.out.println(String.format("fizzBuzz(%d) => %s", i, fizzBuzz(i)));
-    }
-  }
 }

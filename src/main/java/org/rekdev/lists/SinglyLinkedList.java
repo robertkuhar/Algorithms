@@ -2,7 +2,6 @@ package org.rekdev.lists;
 
 import java.util.Iterator;
 
-
 public class SinglyLinkedList<T> implements Iterable<T> {
 
   private ListElement<T> head = null;
@@ -20,13 +19,12 @@ public class SinglyLinkedList<T> implements Iterable<T> {
   }
 
   public T getAt(int ix) {
-    ListElement<T> elemAtIx = getElementAt(ix);
-    return (elemAtIx != null) ? elemAtIx.getPayload() : null;
+    return getElementAt(ix).getPayload();
   }
 
   private ListElement<T> getElementAt(int ix) {
     if (ix < 0) {
-      throw new IllegalArgumentException("ix must be postive");
+      throw new IllegalArgumentException("ix must be positive");
     }
     int i = 0;
     ListElement<T> elemAtIx = head;
@@ -37,11 +35,11 @@ public class SinglyLinkedList<T> implements Iterable<T> {
       i++;
       elemAtIx = elemAtIx.getNext();
     }
-    throw new IndexOutOfBoundsException();
+    throw new IndexOutOfBoundsException(String.format("ix %d is out of bounds", ix));
   }
 
   public void addFirst(T obj) {
-    ListElement<T> e = new ListElement<T>(obj);
+    ListElement<T> e = new ListElement<>(obj);
     if (head == null) {
       head = tail = e;
     } else {
@@ -54,7 +52,7 @@ public class SinglyLinkedList<T> implements Iterable<T> {
     if (head == null) {
       addFirst(obj);
     } else {
-      ListElement<T> e = new ListElement<T>(obj);
+      ListElement<T> e = new ListElement<>(obj);
       tail.setNext(e);
       tail = e;
     }
@@ -66,7 +64,7 @@ public class SinglyLinkedList<T> implements Iterable<T> {
 
   public void insertAt(int ix, T obj) {
     if (ix < 0) {
-      throw new IllegalArgumentException("ix must be postive");
+      throw new IllegalArgumentException("ix must be positive");
     }
     int i = 0;
     ListElement<T> elemAtIx = head;
@@ -79,7 +77,7 @@ public class SinglyLinkedList<T> implements Iterable<T> {
     if (elemAtIx == null || i != ix) {
       throw new IndexOutOfBoundsException();
     }
-    ListElement<T> candidate = new ListElement<T>(obj, elemAtIx);
+    ListElement<T> candidate = new ListElement<>(obj, elemAtIx);
     if (elemAtIxMinusOne != null) {
       elemAtIxMinusOne.setNext(candidate);
     } else {
@@ -102,7 +100,7 @@ public class SinglyLinkedList<T> implements Iterable<T> {
       ListElement<T> elementPrev = getElementAt(ix - 1);
       elementPrev.setNext(elementAt.getNext());
     }
-    return (elementAt != null) ? elementAt.getPayload() : null;
+    return elementAt.getPayload();
   }
 
   public boolean remove(T obj) {
@@ -132,7 +130,7 @@ public class SinglyLinkedList<T> implements Iterable<T> {
 
   @Override
   public Iterator<T> iterator() {
-    return new SinglyLinkedListIterator<T>(this);
+    return new SinglyLinkedListIterator<>(this);
   }
 
   public static class SinglyLinkedListIterator<T> implements Iterator<T> {
