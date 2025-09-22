@@ -5,25 +5,30 @@ import java.util.List;
 
 public class PermutationsOfString {
 
+  /**
+   * Generates all permutations of a string.
+   *
+   * @param prefix The current string being built, initially empty.
+   * @param s      The remaining characters to permute.
+   * @return A list containing all permutations.
+   */
   static public List<String> permutation(String prefix, String s) {
+    System.out.printf("permutation( \"%s\", \"%s\" )\n", prefix, s);
     checkNotNull(s);
     checkNotNull(prefix);
     List<String> permutations = new ArrayList<>();
     int n = s.length();
+    // Base Case: If the remaining string is empty, the prefix is a completed permutation.
     if (n == 0) {
-      /*
-       * When there are no letters left, the prefix is a permutation of
-       * the original s
-       */
       permutations.add(prefix);
     } else {
+      // Iterate through each character of the input s...
       for (int i = 0; i < n; i++) {
-        /*
-         * Pick one character off the front, add it to the prefix, and
-         * recursively call permutation with the s without the character
-         * at the current position.
-         */
         permutations.addAll(
+            /*
+             * add the selected character to the prefix and recurse on the remaining characters,
+             * excluding the one just selected.
+             */
             permutation(
                 prefix + s.charAt(i),
                 s.substring(0, i) + s.substring(i + 1, n)));
