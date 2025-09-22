@@ -1,5 +1,6 @@
 package org.rekdev.capacitycalc;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
@@ -18,6 +19,9 @@ public class CapacityCalculatorTests {
     testHarder(findMaxesFromHere);
     testHarderYet(findMaxesFromHere);
     testEdgeCases(findMaxesFromHere);
+    assertThatExceptionOfType(IllegalArgumentException.class)
+        .isThrownBy(() -> findMaxesFromHere.calc(null))
+        .withMessage("Expected not null array");
   }
 
   void testIt(int expectedCapacity, int[] array, CapacityCalculator capacityCalculator) {
@@ -48,7 +52,7 @@ public class CapacityCalculatorTests {
   }
 
   @Test
-  public void testCanfieldCapcityCalculator() {
+  public void testCanfieldCapacityCalculator() {
     CapacityCalculator joshC_OnePassWonder = new CanfieldCapacityCalculator();
     testSimple(joshC_OnePassWonder);
     testHarder(joshC_OnePassWonder);
@@ -57,7 +61,7 @@ public class CapacityCalculatorTests {
   }
 
   @Test
-  public void testGeminiCapcityCalculator() {
+  public void testGeminiCapacityCalculator() {
     CapacityCalculator capacityCalculator = new GeminiCapacityCalculator();
     testSimple(capacityCalculator);
     testHarder(capacityCalculator);
