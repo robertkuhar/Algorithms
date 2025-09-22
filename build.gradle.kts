@@ -18,6 +18,8 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.11.0")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.11.0")
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.11.0")
+    // https://mvnrepository.com/artifact/org.assertj/assertj-core
+    testImplementation("org.assertj:assertj-core:3.27.5")
 }
 
 tasks.named<Test>("test") {

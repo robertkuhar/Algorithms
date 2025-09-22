@@ -39,7 +39,7 @@ public class MyString {
   @Override
   public boolean equals(Object obj) {
     if (obj instanceof MyString) {
-      MyString that = (MyString) obj;
+      final MyString that = (MyString) obj;
       if (this.myChars.length == that.myChars.length) {
         for (int i = 0; i < this.myChars.length; i++) {
           if (this.myChars[i] != that.myChars[i]) {
