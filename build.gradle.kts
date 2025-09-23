@@ -63,19 +63,6 @@ tasks.jacocoTestCoverageVerification {
 }
 
 tasks.withType<JacocoReport> {
-    afterEvaluate {
-        classDirectories.setFrom(
-            classDirectories.files.map {
-                fileTree(it) {
-                    exclude(
-                        // Exclude all classes annotated with @lombok.Generated
-                        "**/lombok/**",
-                        "**/generated/**"
-                    )
-                }
-            }
-        )
-    }
     reports {
         xml.required.set(false)
         html.required.set(true)
