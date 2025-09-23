@@ -1,4 +1,6 @@
-# My Algorithms Project
+# Algorithms Project
+
+[![Java CI with Gradle](https://github.com/robertkuhar/Algorithms/actions/workflows/gradle.yml/badge.svg)](https://github.com/robertkuhar/Algorithms/actions/workflows/gradle.yml)
 
 Random Algorithmic stuff and interview practice questions in Java
 - http://practiceit.cs.washington.edu/practiceit/list.jsp
