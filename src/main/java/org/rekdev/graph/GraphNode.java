@@ -11,18 +11,16 @@ import java.util.Stack;
 public class GraphNode<T> {
 
   private final T value;
-  private List<GraphNode<T>> children;
+  private final List<GraphNode<T>> children;
 
   public GraphNode(T value, List<GraphNode<T>> children) {
     this.value = value;
-    this.children = new ArrayList<GraphNode<T>>();
-    for (GraphNode<T> child : children) {
-      this.children.add(child);
-    }
+    this.children = new ArrayList<>();
+    this.children.addAll(children);
   }
 
   public GraphNode(T value) {
-    this(value, new ArrayList<GraphNode<T>>());
+    this(value, new ArrayList<>());
   }
 
   public List<GraphNode<T>> getChildren() {
@@ -58,15 +56,15 @@ public class GraphNode<T> {
   /**
    * This method performs a NonRecursive Depth First Search for a Node equal to target.
    *
-   * @param target
+   * @param target value we are searching for
    * @return TreeNode<T> matching target; null if not found.
    */
   public GraphNode<T> dfsNonRecursive(T target) {
-    Stack<GraphNode<T>> stack = new Stack<GraphNode<T>>();
-    Map<GraphNode<T>, GraphNode<T>> visited = new HashMap<GraphNode<T>, GraphNode<T>>();
+    Stack<GraphNode<T>> stack = new Stack<>();
+    Map<GraphNode<T>, GraphNode<T>> visited = new HashMap<>();
     stack.push(this);
     while (!stack.empty()) {
-      GraphNode<T> candidate = (GraphNode<T>) stack.pop();
+      GraphNode<T> candidate = stack.pop();
       if (target.equals(candidate.getValue())) {
         return candidate;
       }
@@ -81,14 +79,13 @@ public class GraphNode<T> {
   }
 
   public GraphNode<T> dfsRecursive(T target) {
-    return dfsRecursive(target, this, new HashSet<GraphNode<T>>());
+    return dfsRecursive(target, this, new HashSet<>());
   }
 
   /**
    * This method performs a Recursive Depth First Search for a Node equal to target.
    *
-   * @param target  node
-   * @param current node
+   * @param target value we are searching for
    * @param visited visited nodes
    * @return TreeNode<T> matching target; null if not found.
    */
@@ -111,15 +108,15 @@ public class GraphNode<T> {
   /**
    * This method performs a NonRecursive Breadth First Search for a Node equal to target.
    *
-   * @param target
+   * @param target value we are searching for
    * @return TreeNode<T> matching target; null if not found.
    */
   public GraphNode<T> bfsNonRecursive(T target) {
-    List<GraphNode<T>> queue = new ArrayList<GraphNode<T>>();
-    Map<GraphNode<T>, GraphNode<T>> visited = new HashMap<GraphNode<T>, GraphNode<T>>();
+    List<GraphNode<T>> queue = new ArrayList<>();
+    Map<GraphNode<T>, GraphNode<T>> visited = new HashMap<>();
     queue.add(this);
     while (!queue.isEmpty()) {
-      GraphNode<T> candidate = (GraphNode<T>) queue.remove(0);
+      GraphNode<T> candidate = queue.removeFirst();
       if (target.equals(candidate.getValue())) {
         return candidate;
       }
