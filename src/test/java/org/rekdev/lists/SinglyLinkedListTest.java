@@ -1,8 +1,8 @@
 package org.rekdev.lists;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -14,6 +14,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class SinglyLinkedListTest {
+
   private SinglyLinkedList<String> list;
 
   // This method runs before each test to ensure a clean state
@@ -78,7 +79,7 @@ public class SinglyLinkedListTest {
   }
 
   @Test
-  public void indexOutOfBoundsThrows() {
+  public void getAt_indexOutOfBoundsThrows() {
     assertFalse(list.iterator().hasNext());
     final Exception thrown = assertThrows(IndexOutOfBoundsException.class, () -> {
       list.getAt(0);
@@ -87,7 +88,7 @@ public class SinglyLinkedListTest {
   }
 
   @Test
-  public void illegalArgumentThrows() {
+  public void getAt_illegalArgumentThrows() {
     final Exception thrown = assertThrows(IllegalArgumentException.class, () -> {
       list.getAt(-1);
     });
@@ -95,11 +96,32 @@ public class SinglyLinkedListTest {
   }
 
   @Test
+  public void insertAt_IllegalArgumentThrows() {
+    assertThatThrownBy(() -> list.insertAt(-1, "negative one"))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessageContaining("ix must be positive");
+  }
+
+  @Test
+  public void insertAt_IndexOutOfBoundsThrows() {
+    assertThatThrownBy(() -> list.insertAt(1, "one"))
+        .isInstanceOf(IndexOutOfBoundsException.class);
+  }
+
+  @Test
+  public void insertAtZeroIsLegig() {
+    list.addFirst("one");
+    list.insertAt(0, "zero");
+    assertEquals("zero", list.getFirst());
+    assertEquals("one", list.getLast());
+  }
+
+  @Test
   public void iteratorTest() {
     assertFalse(list.iterator().hasNext());
 
     final List<String> expected = List.of("one", "two", "three");
-    expected.forEach(s ->  list.add(s));
+    expected.forEach(s -> list.add(s));
 
     final List<String> actual = new ArrayList<>();
     final Iterator<String> it1 = list.iterator();

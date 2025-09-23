@@ -74,7 +74,7 @@ public class SinglyLinkedList<T> implements Iterable<T> {
       elemAtIxMinusOne = elemAtIx;
       elemAtIx = elemAtIx.getNext();
     }
-    if (elemAtIx == null || i != ix) {
+    if (elemAtIx == null) {
       throw new IndexOutOfBoundsException();
     }
     ListElement<T> candidate = new ListElement<>(obj, elemAtIx);
