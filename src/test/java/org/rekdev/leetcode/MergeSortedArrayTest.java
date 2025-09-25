@@ -33,7 +33,7 @@ public class MergeSortedArrayTest {
     final int[] nums2 = {2, 5, 6};
     final int[] expected = {1, 2, 2, 3, 5, 6};
     executeTest(
-        new MergeSortedArrayOptimal(),
+        new MergeSortedArray(),
         nums1,
         3,
         nums2,
@@ -48,7 +48,7 @@ public class MergeSortedArrayTest {
     final int[] nums2 = new int[0];
     final int[] expected = {1};
     executeTest(
-        new MergeSortedArrayOptimal(),
+        new MergeSortedArray(),
         nums1,
         1,
         nums2,
@@ -63,7 +63,7 @@ public class MergeSortedArrayTest {
     final int[] nums2 = {1};
     final int[] expected = {1};
     executeTest(
-        new MergeSortedArrayOptimal(),
+        new MergeSortedArray(),
         nums1,
         0,
         nums2,
@@ -78,7 +78,7 @@ public class MergeSortedArrayTest {
     final int[] nums2 = {2, 5, 6};
     final int[] expected = {1, 2, 2, 5, 6, 7};
     executeTest(
-        new MergeSortedArrayOptimal(),
+        new MergeSortedArray(),
         nums1,
         3,
         nums2,
@@ -93,7 +93,7 @@ public class MergeSortedArrayTest {
     final int[] nums2 = {1};
     final int[] expected = {1, 2};
     executeTest(
-        new MergeSortedArrayOptimal(),
+        new MergeSortedArray(),
         nums1,
         1,
         nums2,
