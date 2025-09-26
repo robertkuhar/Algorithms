@@ -52,7 +52,7 @@ public class RemoveDuplicatesFromSortedArray {
    * </p>
    * <p>
    * Constraints:<br/>
-   * - 1 <= nums.length <= 3 * 104<br/>
+   * - 1 <= nums.length <= 3 * 10^4<br/>
    * - -100 <= nums[i] <= 100<br/>
    * - nums is sorted in non-decreasing order.<br/>
    * </p>
