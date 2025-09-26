@@ -12,13 +12,14 @@ public class RemoveElement {
    * </p>
    * <p>
    * Consider the number of elements in nums which are not equal to val be k, to get accepted, you
-   * need to do the following things:
+   * need to do the following things:<br/>
    * - Change the array nums such that the first k elements of nums contain the elements which are
-   * not equal to val. The remaining elements of nums are not important as well as the size of nums.
-   * - Return k.
+   * not equal to val. The remaining elements of nums are not important as well as the size of
+   * nums.<br/>
+   * - Return k
    * </p>
-   * Custom Judge:
    * <p>
+   * Custom Judge:<br/>
    * The judge will test your solution with the following code:
    * <pre>
    * int[] nums = [...]; // Input array
