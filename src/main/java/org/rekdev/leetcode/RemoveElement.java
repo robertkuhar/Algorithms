@@ -58,6 +58,10 @@ public class RemoveElement {
    * - 0 <= nums[i] <= 50<br/>
    * - 0 <= val <= 100<br/>
    * </p>
+   *
+   * @param nums array from which val should be removed
+   * @param val target val for removal
+   * @return number of elements that _are not_ val
    */
   public int removeElement(int[] nums, int val) {
     int k = 0;

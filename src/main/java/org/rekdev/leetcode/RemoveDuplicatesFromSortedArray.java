@@ -56,6 +56,9 @@ public class RemoveDuplicatesFromSortedArray {
    * - -100 <= nums[i] <= 100<br/>
    * - nums is sorted in non-decreasing order.<br/>
    * </p>
+   *
+   * @param nums input array
+   * @return number of unique elements in nums
    */
   public int removeDuplicates(int[] nums) {
     int k = 0;

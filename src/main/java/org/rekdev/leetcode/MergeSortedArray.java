@@ -43,8 +43,13 @@ public class MergeSortedArray {
    * - nums2[j] <= 10^9
    * <p>
    * Follow up: Can you come up with an algorithm that runs in O(m + n) time?
+   * </p>
+   *
+   * @param nums1 - sorted merge of nums1 and nums2
+   * @param m - number of elements in nums1
+   * @param nums2 - array to be merged into nums1
+   * @param n - number of elements in nums2
    */
-
   public void merge(int[] nums1, int m, int[] nums2, int n) {
     // Pointers for the arrays
     int nums1ReadPointer = m - 1;

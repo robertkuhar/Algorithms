@@ -61,6 +61,9 @@ public class RemoveDuplicatesFromSortedArrayII {
    * - -10^4 <= nums[i] <= 10^4<br/>
    * - nums is sorted in non-decreasing order.<br/>
    * </p>
+   *
+   * @param nums input array
+   * @return number of nums post-processing
    */
   public int removeDuplicates(int[] nums) {
     int k = 0;
