@@ -1,5 +1,10 @@
 package org.rekdev.leetcode;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 public class MajorityElement {
 
   /**
@@ -34,6 +39,28 @@ public class MajorityElement {
    * @return majority element in input array
    */
   public int majorityElement(int[] nums) {
-    return 0;
+    int majorityElement = 0;
+    int count = 0;
+    for (int num : nums) {
+      if (count == 0) {
+        majorityElement = num;
+      }
+      if (num == majorityElement) {
+        count++;
+      } else {
+        count--;
+      }
+    }
+    return majorityElement;
+  }
+
+  public int majorityElementViaMap(int[] nums) {
+    Map<Integer, Integer> map = new HashMap<>();
+    for (int num : nums) {
+      map.put(num, map.getOrDefault(num, 0) + 1);
+    }
+    Map.Entry<Integer, Integer> maxEntry =
+        Collections.max(map.entrySet(), Map.Entry.comparingByValue());
+    return maxEntry.getKey();
   }
 }
