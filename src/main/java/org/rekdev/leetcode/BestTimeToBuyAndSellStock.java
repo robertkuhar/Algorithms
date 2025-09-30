@@ -3,7 +3,7 @@ package org.rekdev.leetcode;
 public class BestTimeToBuyAndSellStock {
 
   /**
-   * 121. Best Time to Buy and Sell Stock
+   * 122. Best Time to Buy and Sell Stock II
    * https://leetcode.com/problems/best-time-to-buy-and-sell-stock/?envType=study-plan-v2&envId=top-interview-150
    *
    * <p>

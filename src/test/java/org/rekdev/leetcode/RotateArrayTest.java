@@ -2,7 +2,6 @@ package org.rekdev.leetcode;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
