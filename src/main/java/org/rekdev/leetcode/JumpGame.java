@@ -43,6 +43,11 @@ public class JumpGame {
       if (i > maxReach) {
         return false;
       }
+      /*
+       * Gemini explained it as "It tracks the maximum index you could have landed on from any
+       * previous valid position up to index i−1". Gemini doesn't really like this forward approach
+       * but this one does make sense to me, its just not maximum efficiency.
+       */
       maxReach = Math.max(maxReach, i + nums[i]);
       if (maxReach >= lastIndex) {
         return true;
