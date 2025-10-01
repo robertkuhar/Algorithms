@@ -27,4 +27,11 @@ public class JumpGameIITest {
     final int actual = jumpGameII.jump(nums);
     assertThat(actual).isEqualTo(2);
   }
+
+  @Test
+  public void testNumsIsJustOne() {
+    final int[] nums = {1};
+    final int actual = jumpGameII.jump(nums);
+    assertThat(actual).isEqualTo(0);
+  }
 }

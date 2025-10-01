@@ -43,32 +43,20 @@ public class JumpGameII {
    * @return minimum number of jumps to last index in nums
    */
   public int jump(int[] nums) {
-    if (nums.length <= 1) {
-      return 0;
-    }
-    int n = nums.length;
-    Queue<Integer> queue = new LinkedList<>();
+    int lastIndex = nums.length - 1;
     int jumps = 0;
-    boolean[] visited = new boolean[nums.length];
-    queue.offer(0);
-    while (!queue.isEmpty()) {
-      int currentLevelSize = queue.size();
-      jumps++;
-      for (int i = 0; i < currentLevelSize; i++) {
-        int index = queue.poll();
-        int maxJump = nums[index];
-        for (int j = 1; j <= maxJump; j++) {
-          int nextIndex = index + j;
-          if (nextIndex == n - 1) {
-            return jumps;
-          }
-          if (nextIndex < n && !visited[nextIndex]) {
-            visited[nextIndex] = true;
-            queue.offer(nextIndex);
-          }
+    int currentJumpEndIndex = 0;
+    int farthestIndex = 0;
+    for (int i = 0; i < lastIndex; i++) {
+      farthestIndex = Math.max(farthestIndex, i + nums[i]);
+      if (i == currentJumpEndIndex) {
+        jumps++;
+        currentJumpEndIndex = farthestIndex;
+        if (farthestIndex >= lastIndex) {
+          return jumps;
         }
       }
     }
-    return -1;
+    return jumps;
   }
 }
