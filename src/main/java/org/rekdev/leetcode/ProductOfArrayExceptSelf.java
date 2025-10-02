@@ -40,13 +40,15 @@ public class ProductOfArrayExceptSelf {
    */
   public int[] productExceptSelf(int[] nums) {
     int[] answers = new int[nums.length];
+    int prefixProduct = 1;
     for (int i = 0; i < nums.length; i++) {
-      answers[i] = 1;
-      for (int j = 0; j < nums.length; j++) {
-        if (i != j) {
-          answers[i] *= nums[j];
-        }
-      }
+      answers[i] = prefixProduct;
+      prefixProduct *= nums[i];
+    }
+    int suffixProduct = 1;
+    for (int i = nums.length - 1; i >= 0; i--) {
+      answers[i] *= suffixProduct;
+      suffixProduct *= nums[i];
     }
     return answers;
   }
