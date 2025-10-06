@@ -52,9 +52,9 @@ import java.util.Random;
  */
 public class RandomizedSet {
 
-  private List<Integer> list = new ArrayList<Integer>();
-  private Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-  private Random random = new Random();
+  private final List<Integer> list = new ArrayList<>();
+  private final Map<Integer, Integer> map = new HashMap<>();
+  private final Random random = new Random();
 
   public RandomizedSet() {
   }
