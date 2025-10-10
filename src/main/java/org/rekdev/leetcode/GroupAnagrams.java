@@ -20,7 +20,7 @@ import java.util.Map;
  * Explanation:<br/>
  * - There is no string in strs that can be rearranged to form "bat".<br/>
  * - The strings "nat" and "tan" are anagrams as they can be rearranged to form each other.<br/>
- * The strings "ate", "eat", and "tea" are anagrams as they can be rearranged to form each other.<br/>
+ * - The strings "ate", "eat", and "tea" are anagrams as they can be rearranged to form each other.<br/>
  * </p>
  * <p>
  * Example 2:<br/>
