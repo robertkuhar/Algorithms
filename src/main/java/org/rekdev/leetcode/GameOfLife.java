@@ -109,11 +109,11 @@ public class GameOfLife {
         }
         if (board[i][j] == 1) {
           if (liveNeighbors < 2 || liveNeighbors > 3) {
-            board[i][j] = 3; // 3 is 'marked for death'
+            board[i][j] = 3; // 3 is 'alive but marked for death'
           }
         } else {
           if (liveNeighbors == 3) {
-            board[i][j] = 2; // 2 is 'marked for life'
+            board[i][j] = 2; // 2 is 'dead but marked for life'
           }
         }
       }
