@@ -1,5 +1,10 @@
 package org.rekdev.leetcode;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Deque;
+import java.util.List;
 import java.util.Stack;
 
 public class SimplifyPath {
@@ -71,7 +76,7 @@ public class SimplifyPath {
    */
   public String simplifyPath(String path) {
     String[] paths = path.split("/");
-    Stack<String> stack = new Stack<>();
+    Deque<String> stack = new ArrayDeque<>();
     for (String p : paths) {
       if ("..".equals(p)) {
         if (!stack.isEmpty()) {
@@ -83,7 +88,8 @@ public class SimplifyPath {
         stack.push(p);
       }
     }
-    // This works because Java's Stack is an Iterable and the elements come out in FIFO order
-    return "/" + String.join("/", stack);
+    List<String> components = new ArrayList<>(stack);
+    Collections.reverse(components); // Puts elements in correct path order (home, user)
+    return "/" + String.join("/", components);
   }
 }
