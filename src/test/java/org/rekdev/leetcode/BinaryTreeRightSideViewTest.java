@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.rekdev.leetcode.BinaryTreeRightSideView.TreeNode;
@@ -68,5 +67,27 @@ public class BinaryTreeRightSideViewTest {
     List<Integer> expected = new ArrayList<>();
     List<Integer> actual = binaryTreeRightSideView.rightSideView(null);
     assertThat(actual).isEqualTo(expected);
+  }
+
+  @Test
+  public void testTreeNodeConstructor() {
+    TreeNode defaultCtor = new TreeNode();
+    treeNodeAssertions(defaultCtor, 0, null, null);
+
+    TreeNode valOnlyCtor = new TreeNode(1);
+    treeNodeAssertions(valOnlyCtor, 1, null, null);
+
+    TreeNode fullCtor = new TreeNode(0, one, two);
+    treeNodeAssertions(fullCtor, 0, one, two);
+  }
+
+  void treeNodeAssertions(
+      TreeNode node,
+      int expectedVal,
+      TreeNode expectedLeft,
+      TreeNode expectedRight) {
+    assertThat(node.val).isEqualTo(expectedVal);
+    assertThat(node.left).isEqualTo(expectedLeft);
+    assertThat(node.right).isEqualTo(expectedRight);
   }
 }
