@@ -26,7 +26,7 @@ public class NumberOfIslandsTest {
         {'1', '1', '0', '0', '0'},
         {'0', '0', '0', '0', '0'}
     };
-    int actual =  numberOfIslands.numIslands(grid);
+    int actual = numberOfIslands.numIslands(grid);
     assertThat(actual).isEqualTo(1);
   }
 
@@ -38,7 +38,7 @@ public class NumberOfIslandsTest {
         {'0', '0', '1', '0', '0'},
         {'0', '0', '0', '1', '1'}
     };
-    int actual =  numberOfIslands.numIslands(grid);
+    int actual = numberOfIslands.numIslands(grid);
     assertThat(actual).isEqualTo(3);
   }
 
