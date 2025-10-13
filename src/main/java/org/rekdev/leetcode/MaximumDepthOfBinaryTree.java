@@ -2,26 +2,6 @@ package org.rekdev.leetcode;
 
 public class MaximumDepthOfBinaryTree {
 
-  public static class TreeNode {
-
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-      this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-      this.val = val;
-      this.left = left;
-      this.right = right;
-    }
-  }
-
   /**
    * 104. MaximumDepthOfBinaryTree
    * https://leetcode.com/problems/maximum-depth-of-binary-tree/description/?envType=study-plan-v2&envId=top-interview-150

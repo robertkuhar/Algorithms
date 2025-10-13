@@ -7,26 +7,6 @@ import java.util.List;
 
 public class BinaryTreeRightSideView {
 
-  public static class TreeNode {
-
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-      this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-      this.val = val;
-      this.left = left;
-      this.right = right;
-    }
-  }
-
   /**
    * 199. Binary Tree Right Side View
    * https://leetcode.com/problems/binary-tree-right-side-view/?envType=study-plan-v2&envId=top-interview-150

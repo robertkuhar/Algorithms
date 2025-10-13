@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.rekdev.leetcode.BinaryTreeRightSideView.TreeNode;
 
 /**
  * 199. Binary Tree Right Side View
