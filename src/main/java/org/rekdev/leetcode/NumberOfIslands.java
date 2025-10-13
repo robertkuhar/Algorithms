@@ -61,7 +61,7 @@ public class NumberOfIslands {
     return nIslands;
   }
 
-  public void traverse(char[][] grid, int r, int c) {
+  private void traverse(char[][] grid, int r, int c) {
     // get out if the cell is out of bounds
     if (r < 0
         || r >= grid.length
