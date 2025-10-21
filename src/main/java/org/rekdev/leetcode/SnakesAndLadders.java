@@ -94,12 +94,12 @@ public class SnakesAndLadders {
    */
   public int snakesAndLadders(int[][] board) {
     int n = board.length;
-    int n2 = n * n; // The destination square label
+    int nSquared = n * n; // The destination square label
 
     // BFS uses a Queue to track squares to visit and a visited array (or Set)
     // to prevent cycles and re-visiting squares unnecessarily.
     Queue<Integer> queue = new ArrayDeque<>();
-    boolean[] visited = new boolean[n2 + 1];
+    boolean[] visited = new boolean[nSquared + 1];
 
     // Start at square 1. The value stored in the queue is the square label.
     // We'll use the 'visited' array to store the minimum number of moves to reach that square.
@@ -107,8 +107,8 @@ public class SnakesAndLadders {
 
     // We can use a different array to store min moves to keep it cleaner.
     // Using -1 for unvisited, 0 for start.
-    int[] moves = new int[n2 + 1];
-    for (int i = 1; i <= n2; i++) {
+    int[] moves = new int[nSquared + 1];
+    for (int i = 1; i <= nSquared; i++) {
       moves[i] = -1;
     }
 
@@ -120,8 +120,8 @@ public class SnakesAndLadders {
       int curr = queue.poll();
 
       // If we reached the end, return the moves count
-      if (curr == n2) {
-        return moves[n2];
+      if (curr == nSquared) {
+        return moves[nSquared];
       }
 
       // Iterate over all 6 possible die rolls
@@ -129,7 +129,7 @@ public class SnakesAndLadders {
         int next = curr + dieRoll;
 
         // Stop if the roll goes past the end square
-        if (next > n2) {
+        if (next > nSquared) {
           break;
         }
 
@@ -156,7 +156,7 @@ public class SnakesAndLadders {
       }
     }
 
-    // If the queue empties and we haven't reached n2, it's impossible.
+    // If the queue empties and we haven't reached nSquared, it's impossible.
     return -1;
   }
 
