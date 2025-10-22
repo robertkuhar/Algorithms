@@ -3,6 +3,8 @@ plugins {
     id("jacoco")
 }
 
+rootProject.defaultTasks = listOf("build")
+
 repositories {
     mavenCentral()
 }
