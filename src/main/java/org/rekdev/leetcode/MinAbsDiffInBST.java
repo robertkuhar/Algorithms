@@ -50,10 +50,10 @@ public class MinAbsDiffInBST {
     return minDiff;
   }
 
-  int minDiff = Integer.MAX_VALUE;
-  Integer previousValue = null;
+  private int minDiff = Integer.MAX_VALUE;
+  private Integer previousValue = null;
 
-  void traverse(TreeNode node) {
+  private void traverse(TreeNode node) {
     if (node == null) {
       return;
     }
