@@ -2,6 +2,8 @@ package org.rekdev.leetcode;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ValidParenthesis {
 
@@ -49,32 +51,31 @@ public class ValidParenthesis {
    *
    * Insight: Gemini suggests HashMap rather than my slightly faster if gauntlet. I'm not buying the
    * 'more concise' argument, but if folks expect to see that, far be it from me to fight over the
-   * little perf diff.
+   * little perf diff. After running this version vs my "if gauntlet", these 2 hashmap lookups are
+   * measurably slower, Runtime 6ms, Beats 6.06%. The "if guantlet" was 3ms, Beats 59.16%
    *
    * @param s
    * @return
    */
   public boolean isValid(String s) {
-    Deque<Character> stack = new ArrayDeque<>();
+    final Map<Character, Character> openingCharByDelimiter = Map.of(
+        ')', '(',
+        ']', '[',
+        '}', '{'
+    );
+    final Deque<Character> stack = new ArrayDeque<>();
     for (int i = 0; i < s.length(); i++) {
-      char c = s.charAt(i);
-      if (c == '(' || c == '[' || c == '{') {
-        stack.push(c);
-      } else {
-        if (!stack.isEmpty()) {
-          char c1 = stack.pop();
-          if (c1 == '(' && c != ')') {
-            return false;
-          }
-          if (c1 == '[' && c != ']') {
-            return false;
-          }
-          if (c1 == '{' && c != '}') {
-            return false;
-          }
-        } else {
+      final char c = s.charAt(i);
+      if (openingCharByDelimiter.containsKey(c)) {
+        if (stack.isEmpty()) {
           return false;
         }
+        final char top = stack.pop();
+        if (top != openingCharByDelimiter.get(c)) {
+          return false;
+        }
+      } else {
+        stack.push(c);
       }
     }
     return stack.isEmpty();
