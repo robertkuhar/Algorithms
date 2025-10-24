@@ -62,19 +62,10 @@ public class PathSum {
     if (root == null) {
       return false;
     }
-    final boolean hasPathSum = traverse(root, targetSum, 0);
-    return hasPathSum;
-  }
-
-  private boolean traverse(TreeNode node, int targetSum, int pathSum) {
-    pathSum += node.val;
-    boolean hasPathSum = node.left == null && node.right == null && pathSum == targetSum;
-    if (node.left != null && !hasPathSum) {
-      hasPathSum = traverse(node.left, targetSum, pathSum);
+    if (root.left == null && root.right == null) {
+      return targetSum == root.val;
     }
-    if (node.right != null && !hasPathSum) {
-      hasPathSum = traverse(node.right, targetSum, pathSum);
-    }
-    return hasPathSum;
+    return hasPathSum(root.left, targetSum - root.val) ||
+        hasPathSum(root.right, targetSum - root.val);
   }
 }
