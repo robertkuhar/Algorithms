@@ -54,18 +54,21 @@ public class PathSum {
    * - -1000 <= targetSum <= 1000<br/>
    * </p>
    *
-   * @param root root of the tree
+   * Insight: Subtraction is the key to not having to pass extra state around; you subtract your
+   * way down to a leaf node and if its value is the targetSum you've found a path.
+   *
+   * @param node root of the tree
    * @param targetSum the target sum
    * @return true if the tree has a root-to-leaf path that sums up to targetSum; false otherwise
    */
-  public boolean hasPathSum(TreeNode root, int targetSum) {
-    if (root == null) {
+  public boolean hasPathSum(TreeNode node, int targetSum) {
+    if (node == null) {
       return false;
     }
-    if (root.left == null && root.right == null) {
-      return targetSum == root.val;
+    if (node.left == null && node.right == null) {
+      return targetSum == node.val;
     }
-    int newTargetSum = targetSum - root.val;
-    return hasPathSum(root.left, newTargetSum) || hasPathSum(root.right, newTargetSum);
+    int newTargetSum = targetSum - node.val;
+    return hasPathSum(node.left, newTargetSum) || hasPathSum(node.right, newTargetSum);
   }
 }
