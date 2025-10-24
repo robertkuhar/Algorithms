@@ -65,7 +65,7 @@ public class PathSum {
     if (root.left == null && root.right == null) {
       return targetSum == root.val;
     }
-    return hasPathSum(root.left, targetSum - root.val) ||
-        hasPathSum(root.right, targetSum - root.val);
+    int newTargetSum = targetSum - root.val;
+    return hasPathSum(root.left, newTargetSum) || hasPathSum(root.right, newTargetSum);
   }
 }
