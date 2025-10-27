@@ -24,4 +24,13 @@ public class ConvertSortedArrayToBSTTest {
     assertThat(root.left.right.val).isEqualTo(-3);
     assertThat(root.right.right.val).isEqualTo(9);
   }
+
+  @Test
+  void testExample2() {
+    int[] input = new int[]{1, 3};
+    TreeNode root = convertSortedArrayToBST.sortedArrayToBST(input);
+    assertThat(root.val).isEqualTo(1);
+    assertThat(root.left).isNull();
+    assertThat(root.right.val).isEqualTo(3);
+  }
 }
