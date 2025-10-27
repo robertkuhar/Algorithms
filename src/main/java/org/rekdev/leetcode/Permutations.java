@@ -81,9 +81,11 @@ public class Permutations {
 
     for (int i = 0; i < nums.length; i++) {
       if (!used[i]) {
+        // These two are 'the move'
         currentPermutation.add(nums[i]);
         used[i] = true;
         generatePermutations(nums, currentPermutation, used, results);
+        // These two are the actual backtrack; undo 'the move'
         used[i] = false;
         currentPermutation.remove(currentPermutation.size() - 1);
       }
