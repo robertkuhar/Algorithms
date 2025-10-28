@@ -33,4 +33,10 @@ public class ConvertSortedArrayToBSTTest {
     assertThat(root.left).isNull();
     assertThat(root.right.val).isEqualTo(3);
   }
+
+  @Test
+  void testQuickOuts() {
+    assertThat(convertSortedArrayToBST.sortedArrayToBST(new int[] {})).isNull();
+    assertThat(convertSortedArrayToBST.sortedArrayToBST(null)).isNull();
+  }
 }
