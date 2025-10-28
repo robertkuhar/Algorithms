@@ -31,6 +31,9 @@ public class ConvertSortedArrayToBST {
    * @return
    */
   public TreeNode sortedArrayToBST(int[] nums) {
+    if(nums == null || nums.length == 0) {
+      return null;
+    }
     final TreeNode root = convert(nums, 0, nums.length - 1);
     return root;
   }
@@ -41,7 +44,7 @@ public class ConvertSortedArrayToBST {
     }
     int midIx = leftIx + (rightIx - leftIx) / 2;
     TreeNode root = new TreeNode(nums[midIx]);
-    root.left = convert(nums, 0, midIx - 1);
+    root.left = convert(nums, leftIx, midIx - 1);
     root.right = convert(nums, midIx + 1, rightIx);
     return root;
   }
