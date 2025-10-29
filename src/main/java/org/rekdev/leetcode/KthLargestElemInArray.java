@@ -33,6 +33,10 @@ public class KthLargestElemInArray {
    * -10^4 <= nums[i] <= 10^4<br/>
    * </p>
    *
+   * Insight: Java PriorityQueue serves as "Min Heap" allowing us to leverage the size of the
+   * queue to "kick out" the smaller numbers in the input array. Feels like sorting to me, but
+   * Gemini asserts its more efficient
+   *
    * @param nums
    * @param k
    * @return
