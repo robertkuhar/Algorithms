@@ -1,5 +1,7 @@
 package org.rekdev.leetcode;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,6 +28,7 @@ public class ThreeSumTest {
         List.of(-1, 0, 1)
     );
     List<List<Integer>> actual = threeSum.threeSum(nums);
+    assertThat(actual).isEqualTo(expected);
   }
 
   @Test
@@ -33,6 +36,7 @@ public class ThreeSumTest {
     int[] nums = new int[]{0, 1, 1};
     List<List<Integer>> expected = new ArrayList<>();
     List<List<Integer>> actual = threeSum.threeSum(nums);
+    assertThat(actual).isEqualTo(expected);
   }
 
   @Test
@@ -42,5 +46,6 @@ public class ThreeSumTest {
         List.of(0, 0, 0)
     );
     List<List<Integer>> actual = threeSum.threeSum(nums);
+    assertThat(actual).isEqualTo(expected);
   }
 }
